@@ -3,7 +3,7 @@
 id=$(id -u)
 LOGS_DIR=/home/ec2-user/app-logs
 LOGS_FILE="$LOGS_DIR/$(basename "$0").log"
-exec >> "$LOGS_FILE" &>
+exec >> "$LOGS_FILE" 2>&1
 if [ $id -ne 0 ]; then
 echo "please run with root user credentials"
 exit 1
