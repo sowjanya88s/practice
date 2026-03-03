@@ -12,6 +12,8 @@ if [ ! -d $source_dir ] ; then
 echo "$source_dir does not exists"
 else
 Files=$((find . -name "*.log" -type f -mtime +14))
-echo "files to be deleted: $Files"
-fi
+    while read -r line; do
+        echo "files to be deleted: $Files"
+    done <<< "$Files"
+ fi
 
