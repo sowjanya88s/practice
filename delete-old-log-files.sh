@@ -1,7 +1,7 @@
 #!/bin/bash
 
 id=$(id -u)
-source_dir=/app-dir
+source_dir="/app-dir"
 
 if [ $id -ne 0 ]; then
 echo "please run with root user credentials"
