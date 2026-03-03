@@ -35,7 +35,7 @@ if [ ! -d $dest_dir ]; then
     echo "destination directory $dest_dir does not exists"
 fi
 
-files_to_delete=$(find $source_dir -name "*.log" -type f -msize +14)
+files_to_delete=$(find $source_dir -name "*.log" -type f -mtime +14)
 if [ -z $files_to_delete ]; then
     echo "there are no files to archieve"
 else
@@ -43,7 +43,7 @@ else
         echo "files to archieve: $line"
         timestamp=$(date +%F-%H-%M-%S)
         Archive_name=$dest_dir/$timestamp.tar.gz
-        tar -xzvf $Archive_name $(find $source_dir -name "*.log" -type f -msize +14)
+        tar -xzvf $Archive_name $(find $source_dir -name "*.log" -type f -mtime +14)
     done <<< $files_to_delete
 fi
 
