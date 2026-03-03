@@ -4,7 +4,8 @@ LOGS_FILE=$LOGS_DIR/$0.log
 id=$(id -u)
 source_dir=$1
 dest_dir=$2
-days=$(3:-14)
+days=${3:-14}
+
 if [ $id -ne 0 ]; then
 echo "pls run the script with root user privileges"
 fi
@@ -16,6 +17,10 @@ usage() {
 log() {
     echo "$(date "+%Y-%m-%d %H:%M:%S") | $1 "
 }
+
+if [ $# -lt 2 ]; then
+    usage
+fi
 
 log "source directory: $source_dir"
 log "destination directory: $dest_dir"
