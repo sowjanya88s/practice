@@ -14,6 +14,8 @@ else
 Files=$(find $source_dir -name "*.log" -type f -mtime +14)
     while read -r line; do
         echo "files to be deleted: $line"
+        rm -f $line
+        echo "$line deleted"
     done <<< "$Files"
  fi
 
