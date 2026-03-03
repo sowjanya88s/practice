@@ -15,7 +15,6 @@ usage() {
     exit 1
 }
 
-mkdir $LOGS_DIR
 
 log() {
     echo "$(date "+%Y-%m-%d %H:%M:%S") | $1 "
