@@ -20,6 +20,7 @@ log() {
 
 if [ $# -lt 2 ]; then
     usage
+    exit 1
 fi
 
 log "source directory: $source_dir"
