@@ -45,7 +45,7 @@ else
         timestamp=$(date +%F-%H-%M-%S)
         Archive_name="$dest_dir/app-logs-$timestamp.tar.gz"
         tar -zcvf $Archive_name $(find $source_dir -name "*.log" -type f -mtime +$days)
-    done <<< $files
+    
 
 
 if [ ! -f $Archive_name ]; then
