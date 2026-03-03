@@ -9,13 +9,13 @@ echo "please run with root user credentials"
 exit 1
 fi
 
-if [ ! -d $LOGS_DIR ] ; then
+if [ ! -d $LOGS_DIR ]; then
 echo "$source_dir does not exists"
 fi
 
 
 Files=$(find $LOGS_DIR -name "*.log" -type f -mtime +14)
-if [ -z $Files ] ; then
+if [ -z $Files ]; then
    echo " files older than 14 days does not exists"
    else
     while read -r line; do
