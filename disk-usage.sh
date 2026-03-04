@@ -15,6 +15,6 @@ path=$(echo $line | awk  '{print $7}')
 usage_Threshold=3
     if [ "$cpu_utilization" -gt "$usage_Threshold" ]; then
         message+="high disk usage on $path : $cpu_utilization% \n"
-        log "message"
+        log "$message"
     fi
 done <<< "$Disk_usage"
