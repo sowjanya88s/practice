@@ -7,8 +7,8 @@ alert_type=$3
 ip_address=$4
 to_team=$5
 
-message_body=$(echo "$FINAL_MESSAGE" | sed -e 's/[]\/$*.^[]/\\&/g')
-FINAL_MESSAGE=$(sed -e "s/to_team/$TO_TEAM/g"   -e "s/message/$message_body/g" -e "s/alert_type/$alert_type/g" -e "s/ip_address/$ip_address" template.html)
+final_message_body=$(echo "$FINAL_MESSAGE" | sed -e 's/[]\/$*.^[]/\\&/g')
+message_body=$(sed -e "s/to_team/$TO_TEAM/g"   -e "s/message/$final_message_body/g" -e "s/alert_type/$alert_type/g" -e "s/ip_address/$ip_address" template.html)
 
 {
 echo "To: $TO_ADDRESS"
