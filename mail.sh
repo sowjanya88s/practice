@@ -1,14 +1,13 @@
 #!/bin/bash
-
 TO_ADDRESS=$1
 SUBJECT=$2
-message_body=$3
-alert_type=$3
-ip_address=$4
-to_team=$5
+MESSAGE_BODY=$3
+ALERT_TYPE=$4
+SERVER_IP=$5
+TO_TEAM=$6
+FINAL_MESSAGE_BODY=$(echo $MESSAGE_BODY | sed -e 's/[]\/$*.^[]/\\&/g')
 
-final_message_body=$(echo "$message_body" | sed -e 's/[]\/$*.^[]/\\&/g')
-final_message=$(sed -e "s/to_team/$TO_TEAM/g"   -e "s/message/$final_message_body/g" -e "s/alert_type/$alert_type/g" -e "s/ip_address/$ip_address" template.html)
+FINAL_MESSAGE=$(sed -e "s/TO_TEAM/$TO_TEAM/g" -e "s/ALERT_TYPE/$ALERT_TYPE/g" -e "s/SERVER_IP/$SERVER_IP/g" -e "s/MESSAGE/$FINAL_MESSAGE_BODY/g" template.html)
 
 {
 echo "To: $TO_ADDRESS"
