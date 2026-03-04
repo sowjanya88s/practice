@@ -10,10 +10,10 @@ log() {
 Disk_usage=$(df -Th | grep -v Filesystem)
 
 while IFS= read -r line; do
-cpu_utilization=$(line | awk -F ' ' '{print $6}' | cut -d '%' -f1)
-path=$(line | awk -F ' ' '{print $7}')
+cpu_utilization=$(echo line | awk -F ' ' '{print $6}' | cut -d '%' -f1)
+path=$(echo line | awk -F ' ' '{print $7}')
 usage_Threshold=3
-    if [ "$cpu_utilization" -gt $UsageThreshold ]; then
+    if [ "$cpu_utilization" -gt "$UsageThreshold" ]; then
         message+=echo -e "high disk usage on $path on disk $cpu_utilization \n"
     fi
 done <<< $Disk_usage
